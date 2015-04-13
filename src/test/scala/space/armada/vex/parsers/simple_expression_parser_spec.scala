@@ -7,6 +7,7 @@ import space.armada.vex.parsers.SimpleExpressionParser
 class SimpleExpressionParserSpec extends Specification with ParserMatchers {
 
 	import space.armada.vex.parsers._
+	import space.armada.vex.symbols._
 
 	val parsers = SimpleExpressionParser
 
