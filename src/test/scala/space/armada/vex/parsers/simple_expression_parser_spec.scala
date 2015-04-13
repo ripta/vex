@@ -55,7 +55,7 @@ class SimpleExpressionParserSpec extends Specification with ParserMatchers {
 		}
 
 		"parse complex expressions" >> {
-			val result: ExpressionSym = Subtract(
+			val result: VexExpression = Subtract(
 				Add(
 					LiteralNumber(50.0),
 					Multiply(Variable("abc"), LiteralNumber(3.0))
