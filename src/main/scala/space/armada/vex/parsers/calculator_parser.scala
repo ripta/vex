@@ -7,6 +7,7 @@ object CalculatorParser extends RegexParsers {
 
   def number: Parser[Double] = """\d+(\.\d*)?""".r ^^ { _.toDouble }
   def factor: Parser[Double] = number | "(" ~> expr <~ ")"
+
   def term  : Parser[Double] = factor ~ rep( "*" ~ factor | "/" ~ factor) ^^ {
     case number ~ list => (number /: list) {
       case (x, "*" ~ y) => x * y
@@ -15,7 +16,7 @@ object CalculatorParser extends RegexParsers {
   }
 
   def expr  : Parser[Double] = term ~ rep("+" ~ term | "-" ~ term) ^^ {
-    case number ~ list => list.foldLeft(number) { // same as before, using alternate name for /:
+    case number ~ list => list.foldLeft(number) {
       case (x, "+" ~ y) => x + y
       case (x, "-" ~ y) => x - y
     }
