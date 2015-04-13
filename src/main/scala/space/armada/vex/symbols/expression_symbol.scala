@@ -1,11 +1,13 @@
 
 package space.armada.vex.symbols
 
-sealed abstract class VexExpression
+sealed abstract class VexAST
 
-case class Context(name: String) extends VexExpression
+case class Context(name: String, root: CompoundExpression) extends VexAST
+case class CompoundExpression(current: VexExpression, next: CompoundExpression) extends VexAST
 
-case class Variable(name: String) extends VexExpression
+sealed abstract class VexExpression extends VexAST
+	case class Variable(name: String) extends VexExpression
 
 sealed abstract class LiteralValue extends VexExpression
 	case class LiteralNumber(value: Double) extends LiteralValue
