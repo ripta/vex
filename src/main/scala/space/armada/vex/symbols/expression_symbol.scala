@@ -3,6 +3,8 @@ package space.armada.vex.symbols
 
 sealed abstract class ExpressionSym
 
+case class Context(name: String) extends ExpressionSym
+
 case class Variable(name: String) extends ExpressionSym
 
 sealed abstract class LiteralValue extends ExpressionSym
